@@ -11,6 +11,7 @@ export default class SignUp extends Component {
       email: '',
       password: '',
     };
+
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.googleSignIn = this.googleSignIn.bind(this);
@@ -21,15 +22,20 @@ export default class SignUp extends Component {
     this.setState({
       [event.target.name]: event.target.value
     });
+
   }
 
   async handleSubmit(event) {
     event.preventDefault();
     this.setState({ error: '' });
     try {
+
       await signup(this.state.email, this.state.password);
+
     } catch (error) {
+
       this.setState({ error: error.message });
+
     }
   }
 
